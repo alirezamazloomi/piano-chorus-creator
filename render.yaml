@@ -1,0 +1,19 @@
+version: 2
+build:
+  packages:
+    - lilypond
+    - ffmpeg
+  python_version: 3.10
+  commands:
+    - pip install -r requirements.txt
+services:
+  - type: web
+    name: piano-chorus-creator-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: PYTHON_VERSION
+        value: 3.10.0
